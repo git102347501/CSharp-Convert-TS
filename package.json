@@ -1,0 +1,62 @@
+{
+	"name": "csharp-convert-ts",
+	"displayName": "CSharp-Convert-TS",
+	"description": "C#类型转换TS-Model插件",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.38.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.cvts"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.cvts",
+				"title": "C#类转换为TS-Model"
+			}
+		],
+		"keybindings": [
+            {
+                "command": "extension.cvts",
+                "key": "ctrl+f10",
+                "mac": "cmd+f10",
+                "when": "editorTextFocus"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+					"when": "editorFocus && resourceLangId == typescript",
+                    "command": "extension.cvts",
+                    "group": "navigation"
+                }
+            ],
+            "editor/title/context": [
+                {
+                    "when": "resourceLangId == typescript",
+                    "command": "extension.cvts",
+                    "group": "navigation"
+                }
+			]
+		}
+	},
+	"scripts": {
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.38.0",
+		"eslint": "^5.13.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.2.0"
+	}
+}
