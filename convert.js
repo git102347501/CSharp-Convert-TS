@@ -5,27 +5,12 @@ module.exports = function(context) {
         vscode.window.activeTextEditor.edit(editBuilder => {
             // 从开始到结束，全量替换
             const end = new vscode.Position(vscode.window.activeTextEditor.document.lineCount + 1, 0);
-            // 第一步，取所有文本，替换掉所有的public private 等修饰符,以及/// <summary>/// </summary>注释区域内容
-            // class UserInfo
-            // {
-            //      string ID { get; set; }
-            //      string NewPwd { get; set; }
-            //      int OldPwd { get; set; }
-            // }
             var contextdoc = vscode.window.activeTextEditor.document.getText();
             contextdoc = contextdoc.replace(/public/g,"");
             contextdoc = contextdoc.replace(/private/g,"");
             contextdoc = contextdoc.replace(/protected/g,"");
             contextdoc = contextdoc.replace(/internal/g,"");
-            //contextdoc = contextdoc.replace(/summary(.*?)summary/g,"");
-
-            // // 第二步, 根据类型匹配字典，将类型替换为对应TS类型加&，将所有{ get; set; }修饰器替换为逗号,花括号替换为[]
-            // class UserInfo
-            // [
-            //      string&ID,
-            //      string&NewPwd,
-            //      number&OldPwd,
-            // ]           
+            //contextdoc = contextdoc.replace(/summary(.*?)summary/g,"");         
             contextdoc = contextdoc.replace(/{ get; set; }/g,",");
             var typelist = [{
                 name:"string", type:"string"
@@ -39,11 +24,11 @@ module.exports = function(context) {
                 name:"DateTime", type:"Date"
             },{
                 name:"decimal", type:"number"
-            }]
+            }];
+            // 属性列表
+            var list = [];
             for (const typeitem of typelist) {
                 var value = contextdoc;
-                // 属性列表
-                var list = [];
                 while(value.indexOf(typeitem.name) !== -1){
                     // 查找类型位置
                     var typeindex = value.indexOf(typeitem.name)  + typeitem.name.length;
@@ -56,6 +41,7 @@ module.exports = function(context) {
                     // 从字符串截出属性，继续循环
                     value = value.substring(valueindex + typeindex + 1, value.length);
                 }
+                var value = contextdoc;
             }
             var start = "export " + contextdoc.substring(0,contextdoc.indexOf("{")).replace("\"","").replace(/^\s*|\s*$/g,"");
             let text = start + "\n" + "{" + "\n" ;
