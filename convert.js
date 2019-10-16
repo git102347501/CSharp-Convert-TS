@@ -5,13 +5,16 @@ module.exports = function(context) {
         vscode.window.activeTextEditor.edit(editBuilder => {
             // 从开始到结束，全量替换
             const end = new vscode.Position(vscode.window.activeTextEditor.document.lineCount + 1, 0);
-            var contextdoc = vscode.window.activeTextEditor.document.getText();
+            var contextdoc = vscode.window.activeTextEditor.document.getText().replace(/\s*/g,"");
             contextdoc = contextdoc.replace(/public/g,"");
             contextdoc = contextdoc.replace(/private/g,"");
             contextdoc = contextdoc.replace(/protected/g,"");
             contextdoc = contextdoc.replace(/internal/g,"");
-            //contextdoc = contextdoc.replace(/summary(.*?)summary/g,"");         
-            contextdoc = contextdoc.replace(/{ get; set; }/g,",");
+            contextdoc = contextdoc.replace(/\/\/\/ <summary>/g,"");  
+            contextdoc = contextdoc.replace(/\/\/\/ <\/summary>/g,"");        
+            contextdoc = contextdoc.replace(/{get;set;}/g,",");
+            contextdoc = contextdoc.replace(/{get;}/g,",");
+            contextdoc = contextdoc.replace(/{set;}/g,",");
             var typelist = [{
                 name:"string", type:"string"
             },{
@@ -22,8 +25,6 @@ module.exports = function(context) {
                 name:"bool", type:"boolean"
             },{
                 name:"DateTime", type:"Date"
-            },{
-                name:"decimal", type:"number"
             }];
             // 属性列表
             var list = [];
@@ -43,8 +44,11 @@ module.exports = function(context) {
                 }
                 var value = contextdoc;
             }
-            var start = "export " + contextdoc.substring(0,contextdoc.indexOf("{")).replace("\"","").replace(/^\s*|\s*$/g,"");
-            let text = start + "\n" + "{" + "\n" ;
+            var clsname = contextdoc.substring(contextdoc.indexOf("class") + 5,contextdoc.indexOf("{"));
+            if (clsname.indexOf(":") != -1) {
+                clsname = clsname.split(":")[0];
+            }
+            let text = "export class " + clsname + "\n" + "{" + "\n" ;
             for (const iterator of list) {
                 text += "    " + iterator.name + ": " + iterator.type + ";" + "\n"
             }
