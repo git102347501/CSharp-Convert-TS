@@ -1,6 +1,6 @@
-# csharp-convert-ts README
+# Csharp-Convert-TS README
 
-This plug-in will be used to convert your c basic type to Typescript Type, So that the program can copy the type conversion directly from the back-end when it needs to build a model.
+This plug-in will be used to convert your C# Type to Typescript Type, So that the program can copy the type conversion directly from the back-end when it needs to build a model.
 
 ## Features
 
