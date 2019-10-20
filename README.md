@@ -8,7 +8,7 @@ After copying the C type, use the right-click menu or use the shortcut key to co
 
 For example if there is an image subfolder under your extension project workspace:
 
-\!\[feature X\]\(images/demo.gif\)
+![image](https://github.com/git102347501/CSharp-Convert-TS/blob/master/images/demo.gif)
 
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
