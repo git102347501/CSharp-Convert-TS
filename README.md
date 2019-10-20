@@ -1,16 +1,15 @@
 # csharp-convert-ts README
 
-This plug-in will be used to convert your c basic type to typescript type, so that the program can copy the type conversion directly from the back-end when it needs to build a model.
+This plug-in will be used to convert your c basic type to Typescript Type, So that the program can copy the type conversion directly from the back-end when it needs to build a model.
 
 ## Features
 
-After copying the C type, use the right-click menu or use the shortcut key to convert the type format.
+After copying the CSharp Type, Use the right-click menu or use the shortcut key to convert the type format.
 
-For example if there is an image subfolder under your extension project workspace:
+The following will show you how to convert the copied type through the right-click menu:
 
 ![image](https://github.com/git102347501/CSharp-Convert-TS/blob/master/images/demo.gif)
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
 
 ## Extension Settings
@@ -21,10 +20,10 @@ For example:
 
 This extension contributes the following settings:
 
-C × type `: typescript type to be converted
+`CSharp type` : Typescript Type
 
 ## Known Issues
-
+Quite a lot......
 
 ## Release Notes
 
@@ -32,7 +31,7 @@ At present, it is a test version, and its function is not stable. If you have an
 
 ### 1.0.0
 
-Complete the use of basic functions ...
+Complete the use of basic functions.
 
 -----------------------------------------------------------------------------------------------------------
 
@@ -40,4 +39,3 @@ Complete the use of basic functions ...
 
 * [GitHub Open source project address](https://github.com/git102347501/CSharp-Convert-TS)
 
-**Enjoy!**
