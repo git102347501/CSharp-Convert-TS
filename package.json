@@ -2,8 +2,12 @@
 	"name": "csharp-convert-ts",
 	"displayName": "CSharp-Convert-TS",
 	"description": "将C#类转换为TypeScript类型的插件",
-	"keywords": ["c#", "typescript", "convert"],
-	"version": "0.1.0",
+	"keywords": [
+		"c#",
+		"typescript",
+		"convert"
+	],
+	"version": "0.1.1",
 	"publisher": "conch",
 	"engines": {
 		"vscode": "^1.38.0"
@@ -23,27 +27,27 @@
 			}
 		],
 		"keybindings": [
-            {
-                "command": "extension.cvts",
-                "key": "ctrl+f10",
-                "mac": "cmd+f10",
-                "when": "editorTextFocus"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
+			{
+				"command": "extension.cvts",
+				"key": "ctrl+f10",
+				"mac": "cmd+f10",
+				"when": "editorTextFocus"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
 					"when": "editorFocus && resourceLangId == typescript",
-                    "command": "extension.cvts",
-                    "group": "navigation"
-                }
-            ],
-            "editor/title/context": [
-                {
-                    "when": "resourceLangId == typescript",
-                    "command": "extension.cvts",
-                    "group": "navigation"
-                }
+					"command": "extension.cvts",
+					"group": "navigation"
+				}
+			],
+			"editor/title/context": [
+				{
+					"when": "resourceLangId == typescript",
+					"command": "extension.cvts",
+					"group": "navigation"
+				}
 			]
 		},
 		"configuration": {
@@ -153,8 +157,8 @@
 		"vscode-test": "^1.2.0"
 	},
 	"repository": {
-        "type": "git",
-        "url": "https://github.com/git102347501/CSharp-Convert-TS"
-    },
-    "homepage": "https://github.com/git102347501/CSharp-Convert-TS/blob/master/README.md"
+		"type": "git",
+		"url": "https://github.com/git102347501/CSharp-Convert-TS"
+	},
+	"homepage": "https://github.com/git102347501/CSharp-Convert-TS/blob/master/README.md"
 }
