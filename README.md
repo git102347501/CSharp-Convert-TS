@@ -8,7 +8,7 @@ After copying the CSharp Type, Use the right-click menu or use the shortcut key 
 
 The following will show you how to convert the copied type through the right-click menu:
 
-![image](images/demo.gif)
+![image](images/convert.gif)
 
 ## Extension Settings
 
