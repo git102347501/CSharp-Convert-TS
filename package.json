@@ -15,6 +15,7 @@
 	"categories": [
 		"Formatters"
 	],
+	"icon": "images/icon.png",
 	"activationEvents": [
 		"onCommand:extension.cvts"
 	],
