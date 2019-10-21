@@ -8,9 +8,11 @@ After copying the CSharp Type, Use the right-click menu or use the shortcut key 
 
 The following will show you how to convert the copied type through the right-click menu:
 
-![image](https://github.com/git102347501/CSharp-Convert-TS/blob/master/images/demo.gif)
+\!\[Demo1 \]\(images/demo1.png\)
 
+convert
 
+\!\[Demo2 \]\(images/demo2.png\)
 
 ## Extension Settings
 
@@ -20,7 +22,7 @@ For example:
 
 This extension contributes the following settings:
 
-`CSharp type` : Typescript Type
+CSharp type: Typescript Type
 
 ## Known Issues
 Quite a lot......
