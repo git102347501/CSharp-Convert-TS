@@ -8,11 +8,7 @@ After copying the CSharp Type, Use the right-click menu or use the shortcut key 
 
 The following will show you how to convert the copied type through the right-click menu:
 
-\!\[Demo1 \]\(images/demo1.png\)
-
-convert
-
-\!\[Demo2 \]\(images/demo2.png\)
+![image](images/demo.gif)
 
 ## Extension Settings
 
