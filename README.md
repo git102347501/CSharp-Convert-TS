@@ -1,6 +1,6 @@
 # Csharp-Convert-TS README
 
-本插件用于:将C#后端类型，通过右键菜单一键转换为TypeScript类型，方便根据后端类型快速建立TS-Model使用。
+本插件用于：将C#后端类型，通过右键菜单一键转换为TypeScript类型，方便根据后端类型快速建立TS-Model使用。
 
 This plug-in will be used to convert your C# Type to Typescript Type, So that the program can copy the type conversion directly from the back-end when it needs to build a model.
 
@@ -22,7 +22,7 @@ For example:
 
 This extension contributes the following settings:
 
-CSharp type: Typescript Type
+CSharp Type: Typescript Type
 
 ## Known Issues
 
@@ -34,10 +34,6 @@ CSharp type: Typescript Type
 4.自定义类
 5.其余未列举出的类型...
 
-## Release Notes
-
-At present, it is a test version, and its function is not stable. If you have any suggestions, you are welcome to raise questions in GitHub project.
-
 ### 0.1.0
 
 1.支持基础值类型，引用类型，动态类型转换。
@@ -47,6 +43,8 @@ At present, it is a test version, and its function is not stable. If you have an
 -----------------------------------------------------------------------------------------------------------
 
 ### For more information
+
+At present, it is a test version, and its function is not stable. If you have any suggestions, you are welcome to raise questions in GitHub project.
 
 * [GitHub Open source project address](https://github.com/git102347501/CSharp-Convert-TS)
 
