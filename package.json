@@ -7,7 +7,7 @@
 		"typescript",
 		"convert"
 	],
-	"version": "0.1.17",
+	"version": "0.1.19",
 	"publisher": "conch",
 	"engines": {
 		"vscode": "^1.38.0"

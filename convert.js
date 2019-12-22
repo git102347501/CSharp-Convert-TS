@@ -3,9 +3,16 @@ module.exports = function(context) {
     // 注册HelloWord命令
     context.subscriptions.push(vscode.commands.registerCommand('extension.cvts', () => {
         vscode.window.activeTextEditor.edit(editBuilder => {
+            const selectiontext = vscode.window.activeTextEditor.document.getText(vscode.window.activeTextEditor.selection);
             // 从开始到结束，全量替换
             const end = new vscode.Position(vscode.window.activeTextEditor.document.lineCount + 1, 0);
-            var contextdoc = vscode.window.activeTextEditor.document.getText().replace(/\s*/g,"");
+            var contextdoc;
+            // 如果没有选中文本，替换全部文本
+            if(!selectiontext){
+                contextdoc = vscode.window.activeTextEditor.document.getText().replace(/\s*/g,"");
+            } else {
+                contextdoc = selectiontext.replace(/\s*/g,"");
+            }
             var rpmodlist = [/public/g,/private/g,/protected/g,/internal/g,/\/\/\/<summary>/g,/\/\/\/<\/summary>/g];
             for (const rptext of rpmodlist) {
                 contextdoc = contextdoc.replace(rptext,"");
@@ -29,9 +36,16 @@ module.exports = function(context) {
             }
             var retext = "";
             for (let index = 0; index < contextdoclist.length; index++) {
+                // 转换为TS类格式
                 retext += getmodel(contextdoclist[index]) + "\n";
             }
-            editBuilder.replace(new vscode.Range(new vscode.Position(0, 0), end), retext);
+            if(!selectiontext){
+                editBuilder.replace(new vscode.Range(new vscode.Position(0, 0), end), retext);
+            } else{
+                // 如果只转换选中文本，那只替换选中文本
+                editBuilder.replace(new vscode.Range(vscode.window.activeTextEditor.selection.start,
+                vscode.window.activeTextEditor.selection.end), retext);
+            }
         });
     }));
 };
@@ -91,19 +105,31 @@ var typelist = [{
 function getmodel(contextdoc){
     // 属性列表
     var list = [];
+    const clastart = contextdoc.indexOf("class") + 5;
+    const claend =contextdoc.indexOf("{");
+    var clsname = contextdoc.substring(clastart,claend);
+    if (clsname.indexOf(":") != -1) {
+        // 如果包含继承，去除继承文本
+        clsname = clsname.split(":")[0];
+    }
+    contextdoc = contextdoc.substring(claend, contextdoc.length);
+    // 遍历类型配置
     for (const typeitem of typelist) {
         var value = contextdoc;
+        // 如果当前文本包含类型，则循环加入生成list
         while(value.indexOf(typeitem.name) !== -1){
-            var tpindex = value.indexOf(typeitem.name);
-            // 查找类型位置
-            var typeindex = value.indexOf(typeitem.name)  + typeitem.name.length;
-            // 查找属性名位置
-            var valueindex = value.substring(typeindex, value.length).indexOf(",");
-            if (valueindex == -1) {
+            // 查找类型名位置
+            const tpindex = value.indexOf(typeitem.name);
+            // 查找类型名称开始位置
+            const itemNameStartIndex = tpindex + typeitem.name.length;
+         
+            // 查找属性名结束位置
+            const itemNameEndIndex = value.substring(itemNameStartIndex, value.length).indexOf(",");
+            if (itemNameEndIndex == -1) {
                 continue;
             }
             // 读取属性名名称
-            var val = value.substring(typeindex, valueindex + typeindex).replace(/\s*/g,"");
+            var val = value.substring(itemNameStartIndex, itemNameEndIndex + itemNameStartIndex).replace(/\s*/g,"");
 
             // 如果包含Nullable<类型>，或者后面有？，则为可空类型
             var isnull = value.substring(tpindex + typeitem.name.length, tpindex + typeitem.name.length + 2).indexOf("?") != -1 ||
@@ -131,13 +157,9 @@ function getmodel(contextdoc){
             // 添加到属性列表
             list.push({ name: val, type: tpval});
             // 从字符串截出属性，继续循环
-            value = value.substring(valueindex + typeindex + 1, value.length);
+            value = value.substring(itemNameEndIndex + itemNameStartIndex + 1, value.length);
         }
         var value = contextdoc;
-    }
-    var clsname = contextdoc.substring(contextdoc.indexOf("class") + 5,contextdoc.indexOf("{"));
-    if (clsname.indexOf(":") != -1) {
-        clsname = clsname.split(":")[0];
     }
     let text = "export class " + clsname + "\n" + "{" + "\n" ;
     for (const iterator of list) {
