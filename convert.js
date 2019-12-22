@@ -30,14 +30,25 @@ module.exports = function(context) {
             var contextdoclist = [];
             var count = patch('class', contextdoc);
             for (let index = 0; index < count; index++) {
+                let notetext = "";
+                const clsindex = contextdoc.indexOf("class");
+                const name = contextdoc.substring(clsindex,contextdoc.indexOf("}"));
+                const nameindex = contextdoc.indexOf("///");
+                if(nameindex > -1 && nameindex < clsindex){
+                    // 类注释位置
+                    notetext = contextdoc.substring(nameindex, clsindex); 
+                }
                 // 取class 到最后一个}区间为值
-                contextdoclist.push(contextdoc.substring(contextdoc.indexOf("class"),contextdoc.indexOf("}")));
-                contextdoc = contextdoc.substring(contextdoc.indexOf("}") +1 , contextdoc.length); 
+                contextdoclist.push({name,note:notetext});
+                contextdoc = contextdoc.substring(contextdoc.indexOf("}") +1 , contextdoc.length);
             }
             var retext = "";
             for (let index = 0; index < contextdoclist.length; index++) {
                 // 转换为TS类格式
-                retext += getmodel(contextdoclist[index]) + "\n";
+                if (contextdoclist[index].note) {
+                    retext += contextdoclist[index].note + "\n";
+                }
+                retext += getmodel(contextdoclist[index].name) + "\n";
             }
             if(!selectiontext){
                 editBuilder.replace(new vscode.Range(new vscode.Position(0, 0), end), retext);
@@ -118,8 +129,18 @@ function getmodel(contextdoc){
         var value = contextdoc;
         // 如果当前文本包含类型，则循环加入生成list
         while(value.indexOf(typeitem.name) !== -1){
-            // 查找类型名位置
+            const zsindex = value.indexOf("///");     
+            let notetext;       
+            // 查找类型名起始位置
             const tpindex = value.indexOf(typeitem.name);
+            // 如果字段有注释
+            if(zsindex > -1){
+                const index = zsindex + 3;
+                notetext =  value.substring(index, tpindex);
+            } else {
+                notetext = "";
+            }
+
             // 查找类型名称开始位置
             const itemNameStartIndex = tpindex + typeitem.name.length;
          
@@ -155,7 +176,7 @@ function getmodel(contextdoc){
             val = val.replace(">","");
             val = val.replace("[]","");
             // 添加到属性列表
-            list.push({ name: val, type: tpval});
+            list.push({ name: val, type: tpval, note: notetext});
             // 从字符串截出属性，继续循环
             value = value.substring(itemNameEndIndex + itemNameStartIndex + 1, value.length);
         }
@@ -163,6 +184,9 @@ function getmodel(contextdoc){
     }
     let text = "export class " + clsname + "\n" + "{" + "\n" ;
     for (const iterator of list) {
+        if (iterator.note) {
+            text += "    // " + iterator.note + "\n"
+        }
         text += "    " + iterator.name + ": " + iterator.type + ";" + "\n"
     }
     text += "}" + "\n";
