@@ -1,6 +1,6 @@
 const vscode = require('vscode');
 module.exports = function(context) {
-    // 注册HelloWord命令
+    // 注册cvts命令
     context.subscriptions.push(vscode.commands.registerCommand('extension.cvts', () => {
         vscode.window.activeTextEditor.edit(editBuilder => {
             const selectiontext = vscode.window.activeTextEditor.document.getText(vscode.window.activeTextEditor.selection);
@@ -59,6 +59,11 @@ module.exports = function(context) {
             }
         });
     }));
+};
+var convertConfig = {
+    // 字段大小写
+    name_transform:vscode.workspace.getConfiguration().get('ClassNameUppercase') !== undefined ? 
+    vscode.workspace.getConfiguration().get('ClassNameUppercase') : true
 };
 // 读取类型替换配置
 var typelist = [{
@@ -176,7 +181,12 @@ function getmodel(contextdoc){
             val = val.replace(">","");
             val = val.replace("[]","");
             // 添加到属性列表
-            list.push({ name: val, type: tpval, note: notetext});
+            list.push(
+                { 
+                    name: convertConfig.name_transform ? 
+                    val.toUpperCase() : val.toLowerCase(), 
+                    type: tpval, note: notetext
+                });
             // 从字符串截出属性，继续循环
             value = value.substring(itemNameEndIndex + itemNameStartIndex + 1, value.length);
         }

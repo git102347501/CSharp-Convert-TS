@@ -7,7 +7,7 @@
 		"typescript",
 		"convert"
 	],
-	"version": "0.1.24",
+	"version": "0.1.29",
 	"publisher": "conch",
 	"engines": {
 		"vscode": "^1.38.0"
@@ -55,6 +55,11 @@
 			"type": "object",
 			"title": "CSharp-Convert-TS",
 			"properties": {
+				"ClassNameUppercase": {
+					"type": "boolean",
+					"default": "true",
+					"description": "勾选转换类属性名称全大写，否则全小写"
+				},
 				"string": {
 					"type": "string",
 					"default": "string",
