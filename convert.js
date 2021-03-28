@@ -98,7 +98,7 @@ var typelist = [{
     vscode.workspace.getConfiguration().get('long') : "number"
 },{
     name:"sbyte",  type: vscode.workspace.getConfiguration().get('sbyte') !== undefined ? 
-    vscode.workspace.getConfiguration().get('sbyte') : "number"
+    vscode.workspace.getConfiguration().get('sbyte') : "byte"
 },{
     name:"short",  type: vscode.workspace.getConfiguration().get('short') !== undefined ? 
     vscode.workspace.getConfiguration().get('short') : "number"
@@ -117,13 +117,16 @@ var typelist = [{
 },{
     name:"dynamic",  type: vscode.workspace.getConfiguration().get('dynamic') !== undefined ? 
     vscode.workspace.getConfiguration().get('dynamic') : "any"
+},{
+    name:"var",  type: vscode.workspace.getConfiguration().get('var') !== undefined ? 
+    vscode.workspace.getConfiguration().get('var') : "any"
 }];
 function getmodel(contextdoc){
     // 属性列表
     var list = [];
     const clastart = contextdoc.indexOf("class") + 5;
-    const claend =contextdoc.indexOf("{");
-    var clsname = contextdoc.substring(clastart,claend);
+    const claend = contextdoc.indexOf("{");
+    var clsname = contextdoc.substring(clastart, claend);
     if (clsname.indexOf(":") != -1) {
         // 如果包含继承，去除继承文本
         clsname = clsname.split(":")[0];
@@ -133,15 +136,20 @@ function getmodel(contextdoc){
     for (const typeitem of typelist) {
         var value = contextdoc;
         // 如果当前文本包含类型，则循环加入生成list
-        while(value.indexOf(typeitem.name) !== -1){
-            const zsindex = value.indexOf("///");     
-            let notetext;       
+        while(value.indexOf(typeitem.name) > -1){
             // 查找类型名起始位置
             const tpindex = value.indexOf(typeitem.name);
+            const tpindexcontext = value.substring(0, tpindex);
+            const zssindex = tpindexcontext.lastIndexOf(',') + 1;
+            // 查询字段前是否有注释
+            const tpnotecontext = value.substring(zssindex, tpindex);
+            const zsindex = tpnotecontext.indexOf("///");     
+            let notetext;       
+
             // 如果字段有注释
             if(zsindex > -1){
-                const index = zsindex + 3;
-                notetext =  value.substring(index, tpindex);
+                // 提取注释
+                notetext =  tpnotecontext.substring(zsindex + 3, tpnotecontext.length);
             } else {
                 notetext = "";
             }
@@ -180,13 +188,16 @@ function getmodel(contextdoc){
             }
             val = val.replace(">","");
             val = val.replace("[]","");
-            // 添加到属性列表
-            list.push(
-                { 
+            var name = convertConfig.name_transform ? val.toUpperCase() : val.toLowerCase();
+            if(list.findIndex(c => c.name == name) < 0){
+                // 添加到属性列表
+                list.push({ 
                     name: convertConfig.name_transform ? 
                     val.toUpperCase() : val.toLowerCase(), 
-                    type: tpval, note: notetext
+                    type: tpval,
+                    note: notetext
                 });
+            }
             // 从字符串截出属性，继续循环
             value = value.substring(itemNameEndIndex + itemNameStartIndex + 1, value.length);
         }
