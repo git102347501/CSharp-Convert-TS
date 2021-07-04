@@ -52,4 +52,4 @@ At present, it is a beta version, and its function is not stable. If you have an
 
 * [GitHub Open source project address](https://github.com/git102347501/CSharp-Convert-TS)
 
-* [Change Log](https://github.com/git102347501/CSharp-Convert-TS/CHANGELOG.md)
+* [Change Log](https://github.com/git102347501/CSharp-Convert-TS/blob/master/CHANGELOG.md)
