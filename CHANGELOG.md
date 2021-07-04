@@ -22,7 +22,7 @@
 - 修复了同属性相邻转换错误问题。
 
 [Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/olivierlacan/keep-a-changelog/commit/1e0e5bf5bd739f85f566241922770169787a90d3
+[1.0.0]: https://github.com/git102347501/CSharp-Convert-TS/commit/1e0e5bf5bd739f85f566241922770169787a90d3
 [0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0
