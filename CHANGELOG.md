@@ -21,8 +21,8 @@
 - 修复了属性名顺序问题。
 - 修复了同属性相邻转换错误问题。
 
-[Beta]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.01...HEAD
-[0.1.01]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.01...v0.1.01
-[0.1.17]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.01...v0.1.17
-[0.1.20]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.17...v0.1.20
-[0.1.28]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.20...v0.1.28
+[Beta]: https://github.com/git102347501/CSharp-Convert-TS/keep-a-changelog/compare/v0.0.01...HEAD
+[0.1.01]: https://github.com/git102347501/CSharp-Convert-TS/keep-a-changelog/compare/v0.0.01...v0.1.01
+[0.1.17]: https://github.com/git102347501/CSharp-Convert-TS/keep-a-changelog/compare/v0.1.01...v0.1.17
+[0.1.20]: https://github.com/git102347501/CSharp-Convert-TS/keep-a-changelog/compare/v0.1.17...v0.1.20
+[0.1.28]: https://github.com/git102347501/CSharp-Convert-TS/keep-a-changelog/compare/v0.1.20...v0.1.28
