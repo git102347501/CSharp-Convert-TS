@@ -1,0 +1,170 @@
+{
+	"name": "csharp-convert-ts",
+	"displayName": "CSharp-Convert-TS",
+	"description": "将C#类转换为TypeScript类型的插件",
+	"keywords": [
+		"c#",
+		"typescript",
+		"convert"
+	],
+	"version": "0.1.29",
+	"publisher": "conch",
+	"engines": {
+		"vscode": "^1.38.0"
+	},
+	"categories": [
+		"Formatters"
+	],
+	"icon": "images/icon.png",
+	"activationEvents": [
+		"onCommand:extension.cvts"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.cvts",
+				"title": "C#类转换为TS-Model"
+			}
+		],
+		"keybindings": [
+			{
+				"command": "extension.cvts",
+				"key": "ctrl+f10",
+				"mac": "cmd+f10",
+				"when": "editorTextFocus"
+			}
+		],
+		"menus": {
+			"editor/context": [
+				{
+					"when": "editorFocus && resourceLangId == typescript",
+					"command": "extension.cvts",
+					"group": "navigation"
+				}
+			],
+			"editor/title/context": [
+				{
+					"when": "resourceLangId == typescript",
+					"command": "extension.cvts",
+					"group": "navigation"
+				}
+			]
+		},
+		"configuration": {
+			"type": "object",
+			"title": "CSharp-Convert-TS",
+			"properties": {
+				"ClassNameUppercase": {
+					"type": "boolean",
+					"default": "true",
+					"description": "勾选转换类属性名称全大写，否则全小写"
+				},
+				"string": {
+					"type": "string",
+					"default": "string",
+					"description": "请在下方输入C#-string类型对应的TypeScript数据类型："
+				},
+				"bool": {
+					"type": "string",
+					"default": "boolean",
+					"description": "请在下方输入C#-bool类型对应的TypeScript数据类型："
+				},
+				"int": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-int类型对应的TypeScript数据类型："
+				},
+				"decimal": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-decimal类型对应的TypeScript数据类型："
+				},
+				"DateTime": {
+					"type": "string",
+					"default": "Date",
+					"description": "请在下方输入C#-DateTime类型对应的TypeScript数据类型："
+				},
+				"byte": {
+					"type": "string",
+					"default": "string",
+					"description": "请在下方输入C#-byte类型对应的TypeScript数据类型："
+				},
+				"char": {
+					"type": "string",
+					"default": "string",
+					"description": "请在下方输入C#-char类型对应的TypeScript数据类型："
+				},
+				"double": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-double类型对应的TypeScript数据类型："
+				},
+				"float": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-float类型对应的TypeScript数据类型："
+				},
+				"long": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-long类型对应的TypeScript数据类型："
+				},
+				"sbyte": {
+					"type": "string",
+					"default": "string",
+					"description": "请在下方输入C#-sbyte类型对应的TypeScript数据类型："
+				},
+				"short": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-short类型对应的TypeScript数据类型："
+				},
+				"uint": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-uint类型对应的TypeScript数据类型："
+				},
+				"ulong": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-ulong类型对应的TypeScript数据类型："
+				},
+				"ushort": {
+					"type": "string",
+					"default": "number",
+					"description": "请在下方输入C#-ushort类型对应的TypeScript数据类型："
+				},
+				"object": {
+					"type": "string",
+					"default": "any",
+					"description": "请在下方输入C#-object类型对应的TypeScript数据类型："
+				},
+				"dynamic": {
+					"type": "string",
+					"default": "any",
+					"description": "请在下方输入C#-dynamic类型对应的TypeScript数据类型："
+				}
+			}
+		}
+	},
+	"scripts": {
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/vscode": "^1.38.0",
+		"eslint": "^5.13.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.2.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/git102347501/CSharp-Convert-TS"
+	},
+	"homepage": "https://github.com/git102347501/CSharp-Convert-TS/blob/master/README.md"
+}
