@@ -16,7 +16,7 @@
         /// <summary>
         /// 设备型号
         /// </summary>
-        public string Type { get; set; }
+        public decimal Types { get; set; }
 
         /// <summary>
         /// 设备数量
