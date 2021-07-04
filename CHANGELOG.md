@@ -21,16 +21,8 @@
 - 修复了属性名顺序问题。
 - 修复了同属性相邻转换错误问题。
 
-[Unreleased]: https://github.com/olivierlacan/keep-a-changelog/compare/v1.0.0...HEAD
-[1.0.0]: https://github.com/git102347501/CSharp-Convert-TS/commit/1e0e5bf5bd739f85f566241922770169787a90d3
-[0.3.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.2.0...v0.3.0
-[0.2.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.8...v0.1.0
-[0.0.8]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.7...v0.0.8
-[0.0.7]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.6...v0.0.7
-[0.0.6]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.5...v0.0.6
-[0.0.5]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.4...v0.0.5
-[0.0.4]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.3...v0.0.4
-[0.0.3]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.2...v0.0.3
-[0.0.2]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.1...v0.0.2
-[0.0.1]: https://github.com/olivierlacan/keep-a-changelog/releases/tag/v0.0.1
+[Beta]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.01...HEAD
+[0.1.01]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.0.01...v0.1.01
+[0.1.17]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.01...v0.1.17
+[0.1.20]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.17...v0.1.20
+[0.1.28]: https://github.com/olivierlacan/keep-a-changelog/compare/v0.1.20...v0.1.28
