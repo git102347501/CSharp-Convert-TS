@@ -1,10 +1,22 @@
 # Csharp-Convert-TS README
 
+![build and Beta](https://marketplace.visualstudio.com/items?itemName=conch.csharp-convert-ts#review-details)
+
+[![Marketplace Download](https://marketplace.visualstudio.com/_apis/public/gallery/publishers/conch/vsextensions/csharp-convert-ts/0.1.18/vspackage)](https://marketplace.visualstudio.com/_apis/public/gallery/publishers/conch/vsextensions/csharp-convert-ts/0.1.18/vspackage)
+
 本插件用于：将C#后端类型，通过右键菜单一键转换为TypeScript类型，方便根据后端类型快速建立TS-Model使用。
 
 This plug-in will be used to convert your C# Type to Typescript Type, So that the program can copy the type conversion directly from the back-end when it needs to build a model.
 
-## Features
+### Install
+
+Install the CSharp-Convert-TS:
+
+````bash
+code --install-extension conch.csharp-convert-ts
+````
+
+### Features
 
 After copying the CSharp Type, Use the right-click menu or use the shortcut key to convert the type format.
 
@@ -31,34 +43,14 @@ CSharp Type: Typescript Type
 1.Dictionary<T,T>
 2.HashTable
 3.ConcurrentDictionary
-4.自定义类
-5.其余未列举出的类型...
+4.Custom class
+5.Other types not listed...
 
-### 0.1.0
-
-1.支持基础值类型，引用类型，动态类型转换。
-2.支持多个类同时转换。
-3.支持转换中屏蔽日常类型注释，修饰符，访问器等。
-
-### 0.1.17
-
-问题修复：
-1.修复了类名或者属性名包含类型名时出现的错误。
-
-功能拓展：
-1.添加选中文本转换。
-说明：右键菜单转换，当编辑器有选择文本时，将会只转换选择的文本类，如果未选择，则转换当前编辑TS文件所有内容。
-
-### 0.1.20
-
-功能拓展：
-1.添加转换的类名以及属性注释保留。
-
------------------------------------------------------------------------------------------------------------
 
 ### For more information
 
-At present, it is a test version, and its function is not stable. If you have any suggestions, you are welcome to raise questions in GitHub project.
+At present, it is a beta version, and its function is not stable. If you have any suggestions, you are welcome to raise questions in GitHub project.
 
 * [GitHub Open source project address](https://github.com/git102347501/CSharp-Convert-TS)
 
+* [Change Log](https://github.com/git102347501/CSharp-Convert-TS/CHANGELOG.md)
