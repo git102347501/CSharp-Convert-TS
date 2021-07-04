@@ -1,7 +1,7 @@
 {
 	"name": "csharp-convert-ts",
 	"displayName": "CSharp-Convert-TS",
-	"description": "将C#类转换为TypeScript类型的插件",
+	"description": "Converting C# class to Typescript type",
 	"keywords": [
 		"c#",
 		"typescript",
@@ -24,7 +24,7 @@
 		"commands": [
 			{
 				"command": "extension.cvts",
-				"title": "C#类转换为TS-Model"
+				"title": "C# class to TS model"
 			}
 		],
 		"keybindings": [
