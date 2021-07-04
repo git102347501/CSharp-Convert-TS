@@ -1,6 +1,6 @@
 # Csharp-Convert-TS README
 
-![build and Beta](https://img.shields.io/github/workflow/status/abpframework/abp/build%20and%20test/dev?style=flat-square)
+[![build and Beta](https://img.shields.io/github/workflow/status/abpframework/abp/build%20and%20test/dev?style=flat-square)](https://marketplace.visualstudio.com/items?itemName=conch.csharp-convert-ts#review-details)
 [![Marketplace Download](https://img.shields.io/nuget/dt/Volo.Abp.Core.svg?style=flat-square)](https://marketplace.visualstudio.com/_apis/public/gallery/publishers/conch/vsextensions/csharp-convert-ts/0.1.18/vspackage)
 
 本插件用于：将C#后端类型，通过右键菜单一键转换为TypeScript类型，方便根据后端类型快速建立TS-Model使用。
