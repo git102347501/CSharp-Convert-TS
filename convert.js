@@ -46,7 +46,7 @@ module.exports = function(context) {
             for (let index = 0; index < contextdoclist.length; index++) {
                 // 转换为TS类格式
                 if (contextdoclist[index].note) {
-                    retext += contextdoclist[index].note + "\n";
+                    retext +=  "/** \n* " + contextdoclist[index].note.replace('///','') + "\n*/\n";
                 }
                 retext += getmodel(contextdoclist[index].name) + "\n";
             }
@@ -63,7 +63,12 @@ module.exports = function(context) {
 var convertConfig = {
     // 字段大小写
     name_transform:vscode.workspace.getConfiguration().get('ClassNameUppercase') !== undefined ? 
-    vscode.workspace.getConfiguration().get('ClassNameUppercase') : true
+    vscode.workspace.getConfiguration().get('ClassNameUppercase') : 0
+};
+var convertTypeConfig = {
+    // 字段大小写
+    name_transform:vscode.workspace.getConfiguration().get('ClassNameType') !== undefined ? 
+    vscode.workspace.getConfiguration().get('ClassNameType') : 0
 };
 // 读取类型替换配置
 var typelist = [{
@@ -156,7 +161,7 @@ function getmodel(contextdoc){
 
             // 查找类型名称开始位置
             const itemNameStartIndex = tpindex + typeitem.name.length;
-         
+
             // 查找属性名结束位置
             const itemNameEndIndex = value.substring(itemNameStartIndex, value.length).indexOf(",");
             if (itemNameEndIndex == -1) {
@@ -188,12 +193,15 @@ function getmodel(contextdoc){
             }
             val = val.replace(">","");
             val = val.replace("[]","");
-            var name = convertConfig.name_transform ? val.toUpperCase() : val.toLowerCase();
+            var name = convertConfig.name_transform == 1 ? 
+            val.toUpperCase() : 
+            convertConfig.name_transform == 2 ? 
+            val.toLowerCase() : 
+            val;
             if(list.findIndex(c => c.name == name) < 0){
                 // 添加到属性列表
                 list.push({ 
-                    name: convertConfig.name_transform ? 
-                    val.toUpperCase() : val.toLowerCase(), 
+                    name: name, 
                     type: tpval,
                     note: notetext
                 });
@@ -203,10 +211,10 @@ function getmodel(contextdoc){
         }
         var value = contextdoc;
     }
-    let text = "export class " + clsname + "\n" + "{" + "\n" ;
+    let text = (convertTypeConfig.name_transform == 0 ? "export interface " : "export class ") + clsname + "\n" + "{" + "\n" ;
     for (const iterator of list) {
         if (iterator.note) {
-            text += "    // " + iterator.note + "\n"
+            text += "    /** \n    * " + iterator.note + "\n    */\n" 
         }
         text += "    " + iterator.name + ": " + iterator.type + ";" + "\n"
     }

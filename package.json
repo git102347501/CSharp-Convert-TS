@@ -24,7 +24,7 @@
 		"commands": [
 			{
 				"command": "extension.cvts",
-				"title": "C# class to TS model"
+				"title": "C# Class to Ts model"
 			}
 		],
 		"keybindings": [
@@ -55,10 +55,15 @@
 			"type": "object",
 			"title": "CSharp-Convert-TS",
 			"properties": {
+				"ClassNameType": {
+					"type": "integer",
+					"default": 0,
+					"description": "勾选转换类型(Check the conversion type): 0-interface 1-class"
+				},
 				"ClassNameUppercase": {
-					"type": "boolean",
-					"default": "true",
-					"description": "勾选转换类属性名称全大写，否则全小写"
+					"type": "integer",
+					"default": 0,
+					"description": "勾选转换类属性名称(Check the conversion attribute name): 0-保持原命名 1-全大写 2-全小写"
 				},
 				"string": {
 					"type": "string",
