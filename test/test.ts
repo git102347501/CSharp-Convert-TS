@@ -1,4 +1,4 @@
-/// <summary>
+    /// <summary>
     /// 医院设备信息
     /// </summary>
     public class HospitalDevice : CreationAuditedEntity<Guid>

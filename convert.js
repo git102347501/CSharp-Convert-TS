@@ -18,7 +18,7 @@ module.exports = function(context) {
                 contextdoc = contextdoc.replace(rptext,"");
             }
             // 去除get，set访问器内的代码???
-            var accessor = [/{get;set;}/g,/{get;}/g,/{set;}/g];
+            var accessor = [/{get;set;}/g,/{get;}/g,/{set;}/g,/{get;init;}/g,/{init;get;}/g,/{init;set;}/g,/{set;init;}/g,/{init;init;}/g];
             for (const rptext of accessor) {
                 contextdoc = contextdoc.replace(rptext,",");
             }
@@ -74,6 +74,9 @@ var convertTypeConfig = {
 var typelist = [{
     name:"string", type: vscode.workspace.getConfiguration().get('string') !== undefined ? 
     vscode.workspace.getConfiguration().get('string') : "string"
+},{
+    name:"Guid", type: vscode.workspace.getConfiguration().get('guid') !== undefined ? 
+    vscode.workspace.getConfiguration().get('guid') : "string"
 },{
     name:"bool",  type: vscode.workspace.getConfiguration().get('bool') !== undefined ? 
     vscode.workspace.getConfiguration().get('bool') : "boolean"
@@ -189,7 +192,7 @@ function getmodel(contextdoc){
                     tpval = tpval + '[]';
                 }
             } else {
-                val = val + '?'
+                tpval = tpval + ' | null';
             }
             val = val.replace(">","");
             val = val.replace("[]","");
