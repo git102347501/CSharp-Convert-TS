@@ -28,6 +28,12 @@
 - 添加转换类或接口选项配置，默认为 0：接口 interface，可选 1：类 class.
 - 转换属性名配置，默认为 0：保持原命名, 1：全大写:2：全小写.
 
+## [0.1.31] - 2023-09-15
+### Fixed
+- 修复了null可空类型，转换ts类型不正确的问题。
+### Added
+- 添加转换类对于init访问器的支持
+  
 [Beta]: https://github.com/git102347501/CSharp-Convert-TS/compare/v0.0.01...HEAD
 [0.1.01]: https://github.com/git102347501/CSharp-Convert-TS/compare/v0.0.01...v0.1.01
 [0.1.17]: https://github.com/git102347501/CSharp-Convert-TS/compare/v0.1.01...v0.1.17
